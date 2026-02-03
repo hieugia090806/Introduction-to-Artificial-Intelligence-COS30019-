@@ -1,3 +1,0 @@
-Melbourne Sydney 878 713
-Melbourne Brisbane -1 1374
-Sydney Newcastle 780 618
