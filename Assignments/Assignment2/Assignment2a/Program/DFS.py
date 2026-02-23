@@ -9,7 +9,7 @@ def load_data():
     start_node = None
     goal_nodes = []
     
-    with open('PathFinder-test2.txt', 'r') as f:
+    with open('PathFinder-test1.txt', 'r') as f:
         lines = [line.strip() for line in f.readlines() if line.strip()]
 
     mode = ""

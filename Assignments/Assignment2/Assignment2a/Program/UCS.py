@@ -12,7 +12,7 @@ def load_data():
     goal_nodes = []
     
     # Hãy đảm bảo file 'PathFinder-test1.txt' tồn tại
-    with open('PathFinder-test4.txt', 'r') as f:
+    with open('PathFinder-test1.txt', 'r') as f:
         lines = [line.strip() for line in f.readlines() if line.strip()]
 
     mode = ""
@@ -39,7 +39,7 @@ def load_data():
 def ucs_algorithm(graph, start, goals):
     frontier = [(0, start, [start])]
     visited = {} 
-    nodes_explored_count = 0 # Đếm số node đã duyệt để đưa vào bảng
+    nodes_explored_count = 0 
 
     while frontier:
         cost, current, path = heapq.heappop(frontier)
@@ -49,7 +49,7 @@ def ucs_algorithm(graph, start, goals):
 
         if current not in visited or cost < visited[current]:
             visited[current] = cost
-            nodes_explored_count += 1 # Mỗi lần mở rộng một node mới
+            nodes_explored_count += 1 
             
             for neighbor in graph.neighbors(current):
                 weight = graph[current][neighbor].get('weight', 1)
