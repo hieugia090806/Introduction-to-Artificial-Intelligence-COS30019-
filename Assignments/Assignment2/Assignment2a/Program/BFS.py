@@ -68,7 +68,7 @@ def bfs_algorithm(graph, start, goal):
 #--3. Main Execution--#
 def main():
     # Kiểm tra tên file chính xác của bạn
-    filename = 'PathFinder-test3.txt' 
+    filename = 'PathFinder-test1.txt' 
     graph, positions, origin, destinations = data_parsing(filename)
     
     if not graph or origin is None: 
