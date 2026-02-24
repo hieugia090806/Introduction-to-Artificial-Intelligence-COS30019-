@@ -61,7 +61,7 @@ def a_star_algorithm(graph, positions, start, goal):
     return None, 0, nodes_explored
 
 def main():
-    filename = 'PathFinder-test4.txt'
+    filename = 'PathFinder-test1.txt'
     graph, positions, origin, destinations = data_reading(filename)
     if not graph: print("Data Error!"); return
 

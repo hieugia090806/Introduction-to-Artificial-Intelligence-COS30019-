@@ -60,7 +60,7 @@ def gbfs_algorithm(graph, positions, start, goal):
     return None, nodes_explored
 #--4. Main Execution--#
 def main():
-    filename = 'PathFinder-test4.txt'
+    filename = 'PathFinder-test1.txt'
     graph, positions, origin, destinations = read_data(filename)
     
     if not graph: print("Data Error!"); return
