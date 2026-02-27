@@ -1,0 +1,33 @@
+Nodes:
+HCM: (10.8, 106.6)
+Singapore: (1.3, 103.8)
+Bangkok: (13.7, 100.5)
+Hong_Kong: (22.3, 114.1)
+Tokyo: (35.6, 139.6)
+Seoul: (37.5, 126.9)
+Sydney: (-33.8, 151.2)
+Manila: (14.5, 120.9)
+Kuala_Lumpur: (3.1, 101.6)
+Taipei: (25.0, 121.5)
+
+Edges:
+(HCM,Singapore): 1085
+(HCM,Bangkok): 715
+(HCM,Hong_Kong): 1490
+(Singapore,Kuala_Lumpur): 350
+(Singapore,Manila): 2390
+(Kuala_Lumpur,Bangkok): 1180
+(Bangkok,Hong_Kong): 1720
+(Hong_Kong,Taipei): 810
+(Hong_Kong,Manila): 1140
+(Taipei,Seoul): 1480
+(Taipei,Tokyo): 2100
+(Manila,Sydney): 6200
+(Seoul,Tokyo): 1150
+(Tokyo,Sydney): 7800
+
+Origin:
+HCM
+
+Destinations:
+Tokyo; Sydney

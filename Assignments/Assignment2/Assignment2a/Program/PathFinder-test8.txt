@@ -1,0 +1,42 @@
+Nodes:
+HCM: (10.7, 106.6)
+Bien_Hoa: (10.9, 106.8)
+Vung_Tau: (10.3, 107.1)
+Phan_Thiet: (10.9, 108.1)
+Da_Lat: (11.9, 108.4)
+Nha_Trang: (12.2, 109.2)
+Buon_Ma_Thuot: (12.6, 108.0)
+Tuy_Hoa: (13.1, 109.3)
+Quy_Nhon: (13.7, 109.2)
+Pleiku: (14.0, 108.0)
+Quang_Ngai: (15.1, 108.8)
+Tam_Ky: (15.5, 108.5)
+Da_Nang: (16.0, 108.2)
+Hue: (16.4, 107.6)
+Dong_Ha: (16.8, 107.1)
+
+Edges:
+(HCM,Bien_Hoa): 30
+(HCM,Vung_Tau): 95
+(Bien_Hoa,Vung_Tau): 70
+(Bien_Hoa,Phan_Thiet): 160
+(Bien_Hoa,Da_Lat): 230
+(Phan_Thiet,Nha_Trang): 250
+(Da_Lat,Nha_Trang): 135
+(Da_Lat,Buon_Ma_Thuot): 210
+(Nha_Trang,Tuy_Hoa): 115
+(Buon_Ma_Thuot,Pleiku): 180
+(Tuy_Hoa,Quy_Nhon): 100
+(Quy_Nhon,Pleiku): 160
+(Quy_Nhon,Quang_Ngai): 175
+(Pleiku,Quang_Ngai): 190
+(Quang_Ngai,Tam_Ky): 50
+(Tam_Ky,Da_Nang): 70
+(Da_Nang,Hue): 100
+(Hue,Dong_Ha): 75
+
+Origin:
+HCM
+
+Destinations:
+Da_Nang; Dong_Ha
