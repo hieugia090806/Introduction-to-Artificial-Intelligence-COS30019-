@@ -1,0 +1,33 @@
+---------------------------------------------------------------------------------
+---------------------The Traffic-based Route Guidance Problem--------------------
+---------------------------------------------------------------------------------
+
+This file demonstrates the official folder structure for the Assignment2b project:
+/Assignment2b
+|
+|--/Data
+|   |---/Figures --> This folder is for visualization data
+|   |---/Notebooks --> This folder contains code files
+|       |---Extract_Symbols.ipynb
+|       |---Extract_SCATSSites.ipynb
+|   |---/Processed --> This folder includes data processed
+|       |---Symbols.csv --> File contains symbols
+|       |---SCATSTypeBusSig.csv 
+|       |---SCATSTypeFireSig.csv 
+|       |---SCATSTypeFireWW.csv 
+|       |---SCATSTypeFlashPx.csv
+|       |---SCATSTypeInt.csv
+|       |---SCATSTypeOHLane.csv
+|       |---SCATSTypePos.csv
+|       |---SCATSTypeRampMtr.csv
+|       |---SCATSTypeRbtMtr.csv
+|       |---SCATSTypeTmpPos.csv
+|   |---/Raw --> This folder holds raw data
+|       |---Scats Data October 2006 (XLSX Worksheet)
+|       |---DataInformation.csv
+|       |---SCATSiteNumbers.csv
+|       |---Traffic_Count_Locations_with_LONG_LAT (XLSX Worksheet)
+|--/Notes.txt 
+|   |---COS30019-2025 S1-A2_B.pdf
+|   |---IBM data_bor.pdf
+|   |---Traffic Flow to Travel Time Conversion v1.0
