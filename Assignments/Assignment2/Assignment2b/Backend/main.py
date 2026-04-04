@@ -1,3 +1,7 @@
+import os
+import csv
+from fastapi.responses import JSONResponse
+# ===== Health Check =====
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -22,6 +26,46 @@ app.add_middleware(
     allow_methods=["*"],    
     allow_headers=["*"],
 )
+# ===== Test Case Data API =====
+@app.get("/api/testcase/{model}")
+def get_testcase_data(model: str):
+    """
+    Đọc file test case CSV theo model (lstm, gru, blstm) và trả về dữ liệu JSON.
+    """
+    model = model.lower()
+    testcase_dir = os.path.join(os.path.dirname(__file__), "ai", "TestCase")
+    # Map model to file pattern
+    file_map = {
+        "lstm": ["LSTM_DeepTest_01.csv", "LSTM_DeepTest_02.csv", "LSTM_DeepTest_03.csv"],
+        "gru": ["GRUTest04.csv", "GRUTest05.csv", "GRUTest06.csv"],
+        "blstm": ["BLSTTest07.csv", "BLSTTest08.csv", "BLSTTest09.csv", "BLSTTest10.csv"],
+    }
+    if model not in file_map:
+        raise HTTPException(status_code=400, detail="Model must be one of: lstm, gru, blstm")
+
+    result = []
+    for fname in file_map[model]:
+        fpath = os.path.join(testcase_dir, fname)
+        if not os.path.exists(fpath):
+            continue
+        with open(fpath, encoding="utf-8-sig") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                # Chuyển đổi các giá trị số về float/int nếu có thể
+                for k, v in row.items():
+                    if v is not None:
+                        try:
+                            if "." in v:
+                                row[k] = float(v)
+                            else:
+                                row[k] = int(v)
+                        except:
+                            pass
+                row["_source_file"] = fname
+                result.append(row)
+    if not result:
+        raise HTTPException(status_code=404, detail="No test case data found for this model")
+    return JSONResponse(content=result)
 
 # ===== Load models ONCE (important) =====
 lstm_model = LSTMPredictor()

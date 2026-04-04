@@ -6,6 +6,7 @@ import {
   Polyline,
 } from "react-leaflet";
 import L from "leaflet";
+import { useEffect, useState } from "react";
 
 type Station = {
   tfm_id: number;
@@ -50,7 +51,52 @@ export function RouteMap({
     routePath?.map((id) => {
       const s = getStation(id);
       return s ? ([s.y, s.x] as [number, number]) : null;
-    }).filter(Boolean) as [number, number][];
+    }).filter((item): item is [number, number] => item !== null);
+
+  // routeCoords: either derived from polylineCoords (ML path) or from
+  // a routing engine (OSRM) when only origin/destination are provided.
+  const [routeCoords, setRouteCoords] = useState<[number, number][]>(
+    polylineCoords
+  );
+
+  useEffect(() => {
+    // If origin/destination available, request OSRM road-following geometry.
+    if (originStation && destStation) {
+      const start: [number, number] = [originStation.y, originStation.x];
+      const end: [number, number] = [destStation.y, destStation.x];
+      // Use the ML-provided station sequence if available; otherwise use origin->dest
+      const waypoints: [number, number][] = 
+      polylineCoords.length >= 2
+      ? polylineCoords
+      : [[originStation.y, originStation.x], [destStation.y, destStation.x]];
+
+      // OSRM expects lon,lat ordering
+      const coordStr = waypoints.map(([lat, lon]) => `${lon},${lat}`).join(";");
+      const osrmUrl = `https://router.project-osrm.org/route/v1/driving/${coordStr}?overview=full&geometries=geojson&alternatives=false`;
+
+      fetch(osrmUrl)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data && data.routes && data.routes.length > 0) {
+            const coords = data.routes[0].geometry.coordinates.map(
+              (c: [number, number]) => [c[1], c[0]] as [number, number]
+            );
+            setRouteCoords(coords);
+          } else {
+            // fallback to straight-line station coordinates
+            setRouteCoords(waypoints);
+          }
+        })
+        .catch((err) => {
+          console.error("OSRM routing error:", err);
+          setRouteCoords(waypoints);
+        });
+    } else {
+      // no valid stations, use whatever polyline data we have
+      setRouteCoords(polylineCoords);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [origin, destination, routePath, stations]);
 
   const center: [number, number] = originStation
     ? [originStation.y, originStation.x]
@@ -94,9 +140,9 @@ export function RouteMap({
         </Marker>
       )}
 
-      {polylineCoords.length > 1 && (
+      {routeCoords.length > 1 && (
         <Polyline
-          positions={polylineCoords}
+          positions={routeCoords}
           pathOptions={{ color: "#2563eb", weight: 4 }}
         />
       )}

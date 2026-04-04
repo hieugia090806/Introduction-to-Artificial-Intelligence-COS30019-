@@ -76,7 +76,7 @@ export function RoutePlanner() {
       setPredictionResult(result);
 
       // ML chưa trả path chi tiết → nối trạm đầu – cuối
-      setRoutePath([Number(origin), Number(destination)]);
+      setRoutePath(result.route_nodes);
       setShowResults(true);
     } catch (err) {
       console.error("Failed to fetch route", err);

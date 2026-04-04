@@ -47,7 +47,11 @@ export function Dashboard() {
       <div>
         <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
         <p className="text-muted-foreground">
-          Traffic-based Route Guidance System Overview
+          Traffic Overview (Prediction-based)
+        </p>
+        <p className="text-xs text-muted-foreground mt-1">
+          Dashboard displays aggregated predictions and system status.<br/>
+          Detailed routing interaction is available in the Route Planner.
         </p>
       </div>
 
@@ -79,10 +83,10 @@ export function Dashboard() {
 
       {/* Charts Row */}
       <div className="grid gap-4 md:grid-cols-2">
-        {/* Traffic Flow Prediction */}
+        {/* Predicted Traffic Snapshot */}
         <Card>
           <CardHeader>
-            <CardTitle>Traffic Flow Prediction (LSTM)</CardTitle>
+            <CardTitle>Predicted Traffic Snapshot (LSTM)</CardTitle>
             <CardDescription>
               Hourly traffic volume forecast for Boroondara area
             </CardDescription>

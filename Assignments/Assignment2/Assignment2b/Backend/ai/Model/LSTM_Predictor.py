@@ -35,6 +35,51 @@ class LSTMPredictor:
         a = np.sin(dp/2)**2 + np.cos(p1)*np.cos(p2)*np.sin(dl/2)**2
         return 2 * R * np.arctan2(np.sqrt(a), np.sqrt(1-a))
     
+    def _interpolate(self, lon1, lat1, lon2, lat2, t: float):
+        # linear interpolation (approx) between two lon/lat points
+        return (lon1 * (1 - t) + lon2 * t, lat1 * (1 - t) + lat2 * t)
+
+    def find_route_nodes(self, start_id, goal_id, max_intermediate=3, max_radius_km=3):
+        """
+        Choose intermediate station IDs between start and goal by sampling
+        intermediate points along the straight line and snapping to the nearest
+        station within `max_radius_km`. Returns a list of station ids including
+        start and goal.
+        """
+        row1 = self.df_stations[self.df_stations['tfm_id'].astype(str) == str(start_id)]
+        row2 = self.df_stations[self.df_stations['tfm_id'].astype(str) == str(goal_id)]
+        if row1.empty or row2.empty:
+            return [start_id, goal_id]
+
+        lon1, lat1 = row1.iloc[0]['x'], row1.iloc[0]['y']
+        lon2, lat2 = row2.iloc[0]['x'], row2.iloc[0]['y']
+        distance = self._haversine(lon1, lat1, lon2, lat2)
+
+        # choose number of intermediates based on distance (coarse)
+        n_inter = min(max_intermediate, max(0, int(distance // 2)))
+
+        chosen = [int(start_id)]
+        used = {int(start_id), int(goal_id)}
+
+        for i in range(1, n_inter + 1):
+            t = i / (n_inter + 1)
+            lon_i, lat_i = self._interpolate(lon1, lat1, lon2, lat2, t)
+
+            # find nearest station to this interpolated point
+            dists = self.df_stations.apply(
+                lambda r: self._haversine(lon_i, lat_i, r['x'], r['y']), axis=1
+            )
+            min_idx = dists.idxmin()
+            min_dist = float(dists.loc[min_idx])
+            candidate_id = int(self.df_stations.loc[min_idx, 'tfm_id'])
+
+            if min_dist <= max_radius_km and candidate_id not in used:
+                chosen.append(candidate_id)
+                used.add(candidate_id)
+
+        chosen.append(int(goal_id))
+        return chosen
+    
     def predict_route(self, start_id, goal_id, traffic_features):
         #-- API Endpoint logic to receive user selection and return traffic prediction. --#
         try:
@@ -69,8 +114,8 @@ class LSTMPredictor:
             speed = np.clip((-93.75 - np.sqrt(max(0, delta))) / (2 * -1.46), 5, self.SPEED_LIMIT)
             travel_time = (distance / speed) * 60 + 0.5
 
-            route_nodes = [start_id, middle_node, goal_id]
-            middle_node = self.find_best_next_station(start_id, traffic_features)
+            # 4. Determine route nodes (stations) for frontend to request geometry
+            route_nodes = self.find_route_nodes(start_id, goal_id, max_intermediate=3, max_radius_km=3)
             # 4. JSON Package for Frontend
             result = {
                 "timestamp": datetime.now().strftime("%H:%M:%S"),

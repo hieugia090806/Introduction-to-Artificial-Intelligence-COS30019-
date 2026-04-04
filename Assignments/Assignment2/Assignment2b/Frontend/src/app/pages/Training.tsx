@@ -28,29 +28,8 @@ import { mlModelMetrics } from "../data/mockData";
 
 export function Training() {
   const [selectedModel, setSelectedModel] = useState<string>("LSTM");
-  const [isTraining, setIsTraining] = useState(false);
-  const [trainingProgress, setTrainingProgress] = useState(0);
-  const [epochs, setEpochs] = useState("100");
-  const [batchSize, setBatchSize] = useState("32");
-  const [learningRate, setLearningRate] = useState("0.001");
 
-  const handleStartTraining = () => {
-    setIsTraining(true);
-    setTrainingProgress(0);
-    
-    // Simulate training progress
-    const interval = setInterval(() => {
-      setTrainingProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          setIsTraining(false);
-          return 100;
-        }
-        return prev + 2;
-      });
-    }, 100);
-  };
-
+  // Static training history for chart display only
   const trainingHistory = [
     { epoch: 10, loss: 0.45, val_loss: 0.48, mae: 15.2, val_mae: 16.8 },
     { epoch: 20, loss: 0.32, val_loss: 0.36, mae: 12.5, val_mae: 13.9 },
@@ -95,20 +74,20 @@ export function Training() {
       </div>
 
       <div className="grid gap-6 lg:grid-cols-3">
-        {/* Training Configuration */}
+        {/* Training Pipeline & Model Description */}
         <div className="lg:col-span-2 space-y-6">
           <Card>
             <CardHeader>
-              <CardTitle>Training Configuration</CardTitle>
+              <CardTitle>Training Pipeline & Model Description</CardTitle>
               <CardDescription>
-                Configure hyperparameters for model training
+                Below is a static description of the ML pipeline and model architectures used for traffic flow prediction.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              {/* Model Selection */}
+              {/* Model Selection (static, no action) */}
               <div className="space-y-2">
                 <Label htmlFor="model">Select Model</Label>
-                <Select value={selectedModel} onValueChange={setSelectedModel}>
+                <Select value={selectedModel} onValueChange={setSelectedModel} disabled>
                   <SelectTrigger id="model">
                     <SelectValue />
                   </SelectTrigger>
@@ -135,87 +114,30 @@ export function Training() {
                 </div>
               </div>
 
-              {/* Hyperparameters */}
-              <div className="grid gap-4 md:grid-cols-3">
-                <div className="space-y-2">
-                  <Label htmlFor="epochs">Epochs</Label>
-                  <Input 
-                    id="epochs" 
-                    type="number" 
-                    value={epochs} 
-                    onChange={(e) => setEpochs(e.target.value)}
-                    disabled={isTraining}
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="batch">Batch Size</Label>
-                  <Input 
-                    id="batch" 
-                    type="number" 
-                    value={batchSize} 
-                    onChange={(e) => setBatchSize(e.target.value)}
-                    disabled={isTraining}
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="lr">Learning Rate</Label>
-                  <Input 
-                    id="lr" 
-                    type="number" 
-                    step="0.0001"
-                    value={learningRate} 
-                    onChange={(e) => setLearningRate(e.target.value)}
-                    disabled={isTraining}
-                  />
-                </div>
+              {/* Pipeline Description (static) */}
+              <div className="p-4 bg-muted rounded-lg space-y-2">
+                <h4 className="font-semibold text-sm flex items-center gap-2">
+                  <Settings className="h-4 w-4" />
+                  Training Pipeline
+                </h4>
+                <ul className="list-disc pl-5 text-sm text-muted-foreground">
+                  <li>Data preprocessing & cleaning</li>
+                  <li>Feature engineering</li>
+                  <li>Train/validation/test split</li>
+                  <li>Model selection (LSTM, GRU, BLSTM)</li>
+                  <li>Model training (pre-trained, static demo)</li>
+                  <li>Evaluation & comparison</li>
+                </ul>
               </div>
-
-              {/* Training Button */}
-              <div className="pt-4">
-                <Button 
-                  onClick={handleStartTraining} 
-                  disabled={isTraining}
-                  className="w-full"
-                >
-                  {isTraining ? (
-                    <>
-                      <Clock className="mr-2 h-4 w-4 animate-spin" />
-                      Training in Progress...
-                    </>
-                  ) : (
-                    <>
-                      <Play className="mr-2 h-4 w-4" />
-                      Start Training
-                    </>
-                  )}
-                </Button>
-              </div>
-
-              {/* Training Progress */}
-              {(isTraining || trainingProgress > 0) && (
-                <div className="space-y-2 pt-2">
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-muted-foreground">Training Progress</span>
-                    <span className="font-medium">{trainingProgress}%</span>
-                  </div>
-                  <Progress value={trainingProgress} />
-                  {trainingProgress === 100 && (
-                    <div className="flex items-center gap-2 text-sm text-green-600">
-                      <CheckCircle2 className="h-4 w-4" />
-                      Training completed successfully!
-                    </div>
-                  )}
-                </div>
-              )}
             </CardContent>
           </Card>
 
-          {/* Training History */}
+          {/* Training History (static chart) */}
           <Card>
             <CardHeader>
               <CardTitle>Training History</CardTitle>
               <CardDescription>
-                Loss and MAE metrics over training epochs
+                Loss and MAE metrics over training epochs (static demo)
               </CardDescription>
             </CardHeader>
             <CardContent>
