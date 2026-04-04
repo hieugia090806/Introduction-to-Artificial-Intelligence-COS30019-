@@ -1,0 +1,340 @@
+[
+    {
+        "timestamp": "16:09:23",
+        "model_used": "Bi-LSTM",
+        "road": "2000F 2070B",
+        "start_node": "52075",
+        "goal_node": "21063",
+        "route_nodes": [
+            52075,
+            6808,
+            46194,
+            2687,
+            21063
+        ],
+        "distance_km": 16.45,
+        "predicted_flow": -593.3,
+        "estimated_speed": 60.0,
+        "travel_time_min": 17.0,
+        "status": "Clear"
+    },
+    {
+        "timestamp": "16:09:30",
+        "road": "2000F 2070B",
+        "start_node": "52075",
+        "goal_node": "21063",
+        "route_nodes": [
+            52075,
+            6808,
+            46194,
+            2687,
+            21063
+        ],
+        "distance_km": 16.45,
+        "predicted_flow": 65.6,
+        "estimated_speed": 60.0,
+        "travel_time_min": 17.0,
+        "status": "Clear"
+    },
+    {
+        "timestamp": "16:09:31",
+        "road": "2000F 2070B",
+        "start_node": "52075",
+        "goal_node": "21063",
+        "route_nodes": [
+            52075,
+            6808,
+            46194,
+            2687,
+            21063
+        ],
+        "distance_km": 16.45,
+        "predicted_flow": 65.6,
+        "estimated_speed": 60.0,
+        "travel_time_min": 17.0,
+        "status": "Clear"
+    },
+    {
+        "timestamp": "16:34:15",
+        "road": "160 SOUTH ROADB 2500F",
+        "start_node": "42013",
+        "goal_node": "36894",
+        "route_nodes": [
+            42013,
+            36894
+        ],
+        "distance_km": 47.47,
+        "predicted_flow": 65.3,
+        "estimated_speed": 60.0,
+        "travel_time_min": 48.0,
+        "status": "Clear"
+    },
+    {
+        "timestamp": "16:34:34",
+        "road": "160 SOUTH ROADB 2500F",
+        "start_node": "42013",
+        "goal_node": "36894",
+        "route_nodes": [
+            42013,
+            36894
+        ],
+        "distance_km": 47.47,
+        "predicted_flow": 65.3,
+        "estimated_speed": 60.0,
+        "travel_time_min": 48.0,
+        "status": "Clear"
+    },
+    {
+        "timestamp": "16:34:35",
+        "road": "160 SOUTH ROADB 2500F",
+        "start_node": "42013",
+        "goal_node": "36894",
+        "route_nodes": [
+            42013,
+            36894
+        ],
+        "distance_km": 47.47,
+        "predicted_flow": 65.3,
+        "estimated_speed": 60.0,
+        "travel_time_min": 48.0,
+        "status": "Clear"
+    },
+    {
+        "timestamp": "16:43:08",
+        "road": "160 SOUTH ROADB 2500F",
+        "start_node": "42013",
+        "goal_node": "36894",
+        "route_nodes": [
+            42013,
+            36894
+        ],
+        "distance_km": 47.47,
+        "predicted_flow": 65.3,
+        "estimated_speed": 60.0,
+        "travel_time_min": 48.0,
+        "status": "Clear"
+    },
+    {
+        "timestamp": "16:43:53",
+        "model_used": "GRU",
+        "road": "160 SOUTH ROADB 2500F",
+        "start_node": "42013",
+        "goal_node": "52076",
+        "route_nodes": [
+            42013,
+            17599,
+            52076
+        ],
+        "distance_km": 55.49,
+        "predicted_flow": 416.3,
+        "estimated_speed": 59.4,
+        "travel_time_min": 56.5,
+        "status": "Congested"
+    },
+    {
+        "timestamp": "16:43:57",
+        "road": "160 SOUTH ROADB 2500F",
+        "start_node": "42013",
+        "goal_node": "52076",
+        "route_nodes": [
+            42013,
+            17599,
+            52076
+        ],
+        "distance_km": 55.49,
+        "predicted_flow": 65.3,
+        "estimated_speed": 60.0,
+        "travel_time_min": 56.0,
+        "status": "Clear"
+    },
+    {
+        "timestamp": "16:44:03",
+        "model_used": "Bi-LSTM",
+        "road": "160 SOUTH ROADB 2500F",
+        "start_node": "42013",
+        "goal_node": "52076",
+        "route_nodes": [
+            42013,
+            17599,
+            52076
+        ],
+        "distance_km": 55.49,
+        "predicted_flow": -593.2,
+        "estimated_speed": 60.0,
+        "travel_time_min": 56.0,
+        "status": "Clear"
+    },
+    {
+        "timestamp": "16:44:11",
+        "model_used": "GRU",
+        "road": "160 SOUTH ROADB 2500F",
+        "start_node": "42013",
+        "goal_node": "52076",
+        "route_nodes": [
+            42013,
+            17599,
+            52076
+        ],
+        "distance_km": 55.49,
+        "predicted_flow": 416.3,
+        "estimated_speed": 59.4,
+        "travel_time_min": 56.5,
+        "status": "Congested"
+    },
+    {
+        "timestamp": "16:44:23",
+        "road": "160 SOUTH ROADB 2500F",
+        "start_node": "42013",
+        "goal_node": "52076",
+        "route_nodes": [
+            42013,
+            17599,
+            52076
+        ],
+        "distance_km": 55.49,
+        "predicted_flow": 65.3,
+        "estimated_speed": 60.0,
+        "travel_time_min": 56.0,
+        "status": "Clear"
+    },
+    {
+        "timestamp": "16:44:37",
+        "model_used": "Bi-LSTM",
+        "road": "160 SOUTH ROADB 2500F",
+        "start_node": "42013",
+        "goal_node": "52076",
+        "route_nodes": [
+            42013,
+            17599,
+            52076
+        ],
+        "distance_km": 55.49,
+        "predicted_flow": -593.2,
+        "estimated_speed": 60.0,
+        "travel_time_min": 56.0,
+        "status": "Clear"
+    },
+    {
+        "timestamp": "16:44:41",
+        "model_used": "Bi-LSTM",
+        "road": "160 SOUTH ROADB 2500F",
+        "start_node": "42013",
+        "goal_node": "52076",
+        "route_nodes": [
+            42013,
+            17599,
+            52076
+        ],
+        "distance_km": 55.49,
+        "predicted_flow": -593.2,
+        "estimated_speed": 60.0,
+        "travel_time_min": 56.0,
+        "status": "Clear"
+    },
+    {
+        "timestamp": "16:44:42",
+        "model_used": "Bi-LSTM",
+        "road": "160 SOUTH ROADB 2500F",
+        "start_node": "42013",
+        "goal_node": "52076",
+        "route_nodes": [
+            42013,
+            17599,
+            52076
+        ],
+        "distance_km": 55.49,
+        "predicted_flow": -593.2,
+        "estimated_speed": 60.0,
+        "travel_time_min": 56.0,
+        "status": "Clear"
+    },
+    {
+        "timestamp": "16:44:42",
+        "model_used": "Bi-LSTM",
+        "road": "160 SOUTH ROADB 2500F",
+        "start_node": "42013",
+        "goal_node": "52076",
+        "route_nodes": [
+            42013,
+            17599,
+            52076
+        ],
+        "distance_km": 55.49,
+        "predicted_flow": -593.2,
+        "estimated_speed": 60.0,
+        "travel_time_min": 56.0,
+        "status": "Clear"
+    },
+    {
+        "timestamp": "16:44:42",
+        "model_used": "Bi-LSTM",
+        "road": "160 SOUTH ROADB 2500F",
+        "start_node": "42013",
+        "goal_node": "52076",
+        "route_nodes": [
+            42013,
+            17599,
+            52076
+        ],
+        "distance_km": 55.49,
+        "predicted_flow": -593.2,
+        "estimated_speed": 60.0,
+        "travel_time_min": 56.0,
+        "status": "Clear"
+    },
+    {
+        "timestamp": "16:45:10",
+        "model_used": "Bi-LSTM",
+        "road": "2000F 2070B",
+        "start_node": "54241",
+        "goal_node": "52076",
+        "route_nodes": [
+            54241,
+            42564,
+            54097,
+            46194,
+            52076
+        ],
+        "distance_km": 10.74,
+        "predicted_flow": -593.2,
+        "estimated_speed": 60.0,
+        "travel_time_min": 11.2,
+        "status": "Clear"
+    },
+    {
+        "timestamp": "16:45:29",
+        "road": "2000F 2070B",
+        "start_node": "54241",
+        "goal_node": "52076",
+        "route_nodes": [
+            54241,
+            42564,
+            54097,
+            46194,
+            52076
+        ],
+        "distance_km": 10.74,
+        "predicted_flow": 64.9,
+        "estimated_speed": 60.0,
+        "travel_time_min": 11.2,
+        "status": "Clear"
+    },
+    {
+        "timestamp": "16:45:33",
+        "road": "2000F 2070B",
+        "start_node": "54241",
+        "goal_node": "52076",
+        "route_nodes": [
+            54241,
+            42564,
+            54097,
+            46194,
+            52076
+        ],
+        "distance_km": 10.74,
+        "predicted_flow": 64.9,
+        "estimated_speed": 60.0,
+        "travel_time_min": 11.2,
+        "status": "Clear"
+    }
+]
