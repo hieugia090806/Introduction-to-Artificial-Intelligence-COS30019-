@@ -53,8 +53,6 @@ export function RouteMap({
       return s ? ([s.y, s.x] as [number, number]) : null;
     }).filter((item): item is [number, number] => item !== null);
 
-  // routeCoords: either derived from polylineCoords (ML path) or from
-  // a routing engine (OSRM) when only origin/destination are provided.
   const [routeCoords, setRouteCoords] = useState<[number, number][]>(
     polylineCoords
   );
