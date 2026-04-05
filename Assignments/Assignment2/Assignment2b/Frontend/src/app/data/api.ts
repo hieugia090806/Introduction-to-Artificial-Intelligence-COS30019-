@@ -23,10 +23,7 @@ export async function fetchRoutePrediction(payload: RoutePayload) {
     return data
 }
 
-// Ví dụ hàm gọi API dự đoán route
 export async function predictRoute(payload: RoutePayload) {
-  // Thay vì bóc tách (destructuring) ngay ở tham số, 
-  // hãy truyền cả object payload vào để tận dụng Type đã định nghĩa.
   const response = await fetch("http://localhost:8000/route", {
     method: "POST",
     headers: {
@@ -59,10 +56,9 @@ async function handlePredict() {
       model: "LSTM",
       start_node: 1,
       goal_node: 10,
-      traffic_features: [/* array số liệu đầu vào */],
+      traffic_features: [],
     });
     console.log("Kết quả dự đoán:", result);
-    // Xử lý kết quả ở đây (hiển thị lên UI, v.v.)
   } catch (err) {
     if (err instanceof Error) {
       alert(err.message);

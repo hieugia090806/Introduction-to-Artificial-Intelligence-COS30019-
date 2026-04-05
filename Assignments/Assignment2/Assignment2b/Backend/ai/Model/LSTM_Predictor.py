@@ -90,33 +90,33 @@ class LSTMPredictor:
             if row1.empty or row2.empty:
                 return {"error": "Station ID not found in database"}
 
-            # Get coordinates and names
+            # 2. Get coordinates and names
             lon1, lat1 = row1.iloc[0]['x'], row1.iloc[0]['y']
             lon2, lat2 = row2.iloc[0]['x'], row2.iloc[0]['y']
             road_name = row1.iloc[0]['road_name']
 
             distance = self._haversine(lon1, lat1, lon2, lat2)
 
-            # 2. LSTM Inference
+            # 3. LSTM Inference
             input_array = np.array(traffic_features).reshape(1, -1)
             scaled_data = self.scaler.transform(input_array)
             lstm_input = np.tile(scaled_data, (1, 96, 1))
             
             prediction = self.model.predict(lstm_input, verbose=0)
             
-            # 3. Calculations (Flow -> Speed -> Time)
+            # 4. Calculations (Flow -> Speed -> Time)
             dummy = np.zeros((1, self.cols_needed))
             dummy[0, 0] = prediction[0][0]
             flow_hr = self.scaler.inverse_transform(dummy)[0, 0] * 4
             
-            # Quadratic speed model
+            # 5. Quadratic speed model
             delta = 93.75**2 - 4 * (-1.46) * (-flow_hr)
             speed = np.clip((-93.75 - np.sqrt(max(0, delta))) / (2 * -1.46), 5, self.SPEED_LIMIT)
             travel_time = (distance / speed) * 60 + 0.5
 
-            # 4. Determine route nodes (stations) for frontend to request geometry
+            # 6. Determine route nodes (stations) for frontend to request geometry
             route_nodes = self.find_route_nodes(start_id, goal_id, max_intermediate=3, max_radius_km=3)
-            # 4. JSON Package for Frontend
+            # 7. JSON Package for Frontend
             result = {
                 "timestamp": datetime.now().strftime("%H:%M:%S"),
                 "road": str(road_name),

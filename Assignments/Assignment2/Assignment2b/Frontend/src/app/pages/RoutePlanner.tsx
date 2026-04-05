@@ -74,8 +74,6 @@ export function RoutePlanner() {
     try {
       const result = await fetchRoutePrediction(payload);
       setPredictionResult(result);
-
-      // ML chưa trả path chi tiết → nối trạm đầu – cuối
       setRoutePath(result.route_nodes);
       setShowResults(true);
     } catch (err) {

@@ -20,7 +20,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:3000",
-        "http://localhost:5173",  # Nếu dùng Vite
+        "http://localhost:5173",  
         "http://127.0.0.1:3000",],
     allow_credentials=True,
     allow_methods=["*"],    
@@ -51,7 +51,6 @@ def get_testcase_data(model: str):
         with open(fpath, encoding="utf-8-sig") as f:
             reader = csv.DictReader(f)
             for row in reader:
-                # Chuyển đổi các giá trị số về float/int nếu có thể
                 for k, v in row.items():
                     if v is not None:
                         try:
@@ -128,6 +127,5 @@ def root():
 
 @app.get("/stations")
 def get_valid_stations():
-    df = lstm_model.df_stations   # dataframe load từ efficiency_stations_cleaned.csv
-
+    df = lstm_model.df_stations  
     return df[["tfm_id", "road_name", "x", "y"]].drop_duplicates().to_dict("records")
