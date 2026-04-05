@@ -20,49 +20,48 @@ Separates offline model training from online inference and visualisation
 
 ### Team Members
 
-|      NameStudent      | ID     |   Role   |
-|:----------------------|:------:|---------:|
-| Truong Ngoc Gia Hieu  |  Cell  | AI train |
-| Huynh Trong Hieu      |  Cell  | AI train |
-| Duong Nguyen Dang     |  Cell  | FE + BE  |
-| Pham Nguyen Minh Hoang|  Cell  | AI train |
-| ===================== | ====== | ========:|
+|    Name of Student    |    ID     |   Role   |
+|:----------------------|:---------:|---------:|
+| Truong Ngoc Gia Hieu  | 105565520 | AI train |
+| Huynh Trong Hieu      | 105551833 | AI + BE  |
+| Duong Nguyen Dang     | 105508444 | FE + BE  |
+| Pham Nguyen Minh Hoang| 105543500 | AI train |
 
 ## B. Folder Structure
 The project is organised as follows:
-
+```text
 Assignment2b/
-│
-│
 ├── backend/
-|   ├── ai/
-│   |   ├── Model/
-│   |   |    ├── LSTM_Predictor.py
-│   |   |    ├── GRU_Predictor.py
-│   |   |    └── BLSTM_Predictor.py
-|   |   ├── Data/
-|   |   ├── Document/
-|   |   └── TestCase/
+│   ├── ai/
+│   │   ├── Model/
+│   │   │   ├── LSTM_Predictor.py
+│   │   │   ├── GRU_Predictor.py
+│   │   │   └── BLSTM_Predictor.py
+│   │   ├── Data/
+│   │   ├── Document/
+│   │   └── TestCase/
 │   └── main.py
 │
-└── frontend/
-    ├── src/
-    │   ├── app/
-    │   |   ├── pages/
-    │   │   |   ├── RoutePlanner.tsx
-    │   │   |   ├── Dashboard.tsx
-    │   │   |   ├── Analytics.tsx
-    │   │   |   └── ModelTraining.tsx
-    │   |   ├── components/
-    │   │   |   ├── ui/
-    │   |   │   └── RouteMap.tsx
-    │   |   ├── data/
-    │   |   |   └── api.ts
-    │   |   └── App.tsx
-    |   └── main.tsx
-    ├── index.html
-    └── package.json
-
+├── frontend/
+│   ├── src/
+│   │   ├── app/
+│   │   │   ├── pages/
+│   │   │   │   ├── RoutePlanner.tsx
+│   │   │   │   ├── Dashboard.tsx
+│   │   │   │   ├── Analytics.tsx
+│   │   │   │   └── ModelTraining.tsx
+│   │   │   ├── components/
+│   │   │   │   ├── ui/
+│   │   │   │   └── RouteMap.tsx
+│   │   │   ├── data/
+│   │   │   │   └── api.ts
+│   │   │   └── App.tsx
+│   │   ├── main.tsx
+│   │   └── index.html
+│   └── package.json
+│
+└── README.md
+```
 ### Folder Description
 
 backend/
