@@ -82,24 +82,24 @@ class GRUPredictor:
             #-- 2. GRU AI Inference. --#
             input_array = np.array(traffic_features).reshape(1, -1)
             scaled_data = self.scaler.transform(input_array)
-            # Shape for GRU: (batch, timesteps, features)
+            #--3. Shape for GRU: (batch, timesteps, features)
             gru_input = np.tile(scaled_data, (1, 96, 1))
             
             prediction = self.model.predict(gru_input, verbose=0)
             
-            #-- 3. Post-processing. --#
+            #-- 4. Post-processing. --#
             dummy = np.zeros((1, self.cols_needed))
             dummy[0, 0] = prediction[0][0]
             flow_hr = self.scaler.inverse_transform(dummy)[0, 0] * 4
             
-            #-- Speed Estimation (Greenshields). --#
+            #-- 5. Speed Estimation (Greenshields). --#
             delta = 93.75**2 - 4 * (-1.46) * (-flow_hr)
             speed = np.clip((-93.75 - np.sqrt(max(0, delta))) / (2 * -1.46), 5, self.SPEED_LIMIT)
             travel_time = (distance / speed) * 60 + 0.5
 
-            # Build the station sequence for the route (start -> intermediates -> goal)
+            #-- 6. Build the station sequence for the route (start -> intermediates -> goal) --#
             route_nodes = self.find_route_nodes(start_id, goal_id, max_intermediate=3, max_radius_km=3)
-            #-- 4. JSON Response. --#
+            #-- 7. JSON Response. --#
             result = {
                 "timestamp": datetime.now().strftime("%H:%M:%S"),
                 "model_used": "GRU",
